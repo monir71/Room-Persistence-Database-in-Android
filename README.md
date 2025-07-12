@@ -1,10 +1,10 @@
 In your module's (app's) build.gradle.kts file, include the following:
-
+```
 dependencies {
     implementation("androidx.room:room-runtime:2.7.2")
     annotationProcessor("androidx.room:room-compiler:2.7.2")
 }
-
+```
 Note: Choose only one of ksp or annotationProcessor. Don't include both.
 
 Room Components
@@ -16,7 +16,7 @@ Room is made up of three major components:
 3.  Database: This contains the database holder and serves as the primary access point for your app's persisted, relational data.
 
 Entity:
-
+```
 @Entity(tableName = "expense")
 public class Expense {
     @PrimaryKey(autoGenerate = true)
@@ -64,9 +64,9 @@ public class Expense {
         this.amount = amount;
     }
 }
-
+```
 DAO (interface):
-
+```
 @Dao
 public interface ExpenseDao {
 
@@ -83,9 +83,9 @@ public interface ExpenseDao {
     void deleteTx(Expense expense);
 
 }
-
+```
 Database Helper Class (abstract):
-
+```
 @Database(entities = Expense.class, exportSchema = false, version = 1)
 public abstract class DatabaseHelper extends RoomDatabase {
 
@@ -107,9 +107,9 @@ public abstract class DatabaseHelper extends RoomDatabase {
     public abstract ExpenseDao expenseDao();
 
 }
-
+```
 MainActivity.java
-
+```
         DatabaseHelper databaseHelper = DatabaseHelper.getDB(this);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -132,3 +132,4 @@ MainActivity.java
             }
         });
 
+```
